@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Aluga Cinema | Cinema em casa</title>
-<meta name="description" content="Aluga Cinema — protótipo escolar de aluguel e compra de filmes.">
+<meta name="description" content="Encontre filmes em destaque no Aluga Cinema. Explore títulos, compare opções de aluguel e conheça o catálogo para assistir em casa.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#e11d2e">
+<link rel="canonical" href="https://cesarsilvestrek-cyber.github.io/aluga-cinema/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aluga Cinema">
+<meta property="og:title" content="Aluga Cinema | Filmes para assistir em casa">
+<meta property="og:description" content="Explore o catálogo do Aluga Cinema e compare opções de acesso aos seus filmes favoritos.">
+<meta property="og:url" content="https://cesarsilvestrek-cyber.github.io/aluga-cinema/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Aluga Cinema | Filmes para assistir em casa">
+<meta name="twitter:description" content="Explore o catálogo do Aluga Cinema e descubra filmes para assistir em casa.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Aluga Cinema","url":"https://cesarsilvestrek-cyber.github.io/aluga-cinema/","inLanguage":"pt-BR","description":"Catálogo de filmes com detalhes e opções demonstrativas de aluguel."}
+</script>
 <style>
 :root{--red:#e11d2e;--red-dark:#a90f20;--red-soft:#fff0f1;--dark:#0a0a0b;--panel:#fff;--muted:#72727a;--white:#fff;--line:#e8e8eb;--green:#20c77a;--paper:#f7f7f8}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--paper);color:#151517;line-height:1.5}a{color:inherit;text-decoration:none}
@@ -18,6 +33,9 @@ footer{border-top:1px solid #ddd;padding:34px 20px;color:#777;font-size:12px;bac
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:40;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.dialog{width:min(760px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #333;border-radius:18px;padding:20px}.dialog h3{margin:0 0 12px;font-size:24px}.steps{display:flex;gap:8px;margin-bottom:18px}.step{flex:1;padding:8px;text-align:center;border-radius:8px;background:#1b1b1b;color:#888;font-size:12px}.step.active{background:#3a0a0c;color:#fff}.field{margin:11px 0}.field label{display:block;font-size:12px;color:#bbb;margin-bottom:5px}.field input,.field select{width:100%;padding:11px;border-radius:9px;border:1px solid #444;background:#0a0a0a;color:#fff}.paygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pay{appearance:none;border:1px solid #3a3a3f;background:#171719;color:#fff;border-radius:12px;padding:13px;cursor:pointer;text-align:left;transition:.15s;min-height:58px}.pay:hover{border-color:#777}.pay.active{border-color:var(--red);background:#2a0b0f;box-shadow:0 0 0 1px rgba(225,29,46,.18)}.payName{display:block;font-weight:800;font-size:13px}.payDesc{display:block;font-size:11px;color:#aaa;margin-top:2px}.summary{background:#171717;border-radius:12px;padding:13px;margin:12px 0}.row{display:flex;justify-content:space-between;gap:10px;padding:5px 0}.total{font-size:20px;font-weight:900}.note{background:#201d0b;border:1px solid #5c511d;padding:10px;border-radius:9px;color:#e9dda1;font-size:12px}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px}.hide{display:none}.success{padding:25px;text-align:center}.success .check{font-size:52px;color:var(--green)}
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.partnerRow{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.navlinks{display:none}.grid{grid-template-columns:repeat(2,1fr)}.paygrid{grid-template-columns:1fr}.security{grid-template-columns:1fr}.hero h1{font-size:38px}.dialog{padding:14px;border-radius:14px}.actions{flex-direction:column}.actions .btn{width:100%}}
 .details{display:flex}.details .btn{width:100%;padding:8px;font-size:12px}.userRating{font-size:12px;color:#a66b00}.stars{display:flex;gap:4px}.star{border:0;background:#f4f4f4;border-radius:6px;padding:4px 8px;color:#bbb;cursor:pointer}.star.on{color:#d89500;background:#fff3cd}.detailModal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}.detailModal.open{display:flex}.detailBox{background:#fff;border-radius:18px;padding:22px;width:min(620px,100%);max-height:90vh;overflow:auto}.detailBox h3{margin:0 0 8px;font-size:25px}.detailBox p{color:#555}.detailTop{display:flex;gap:18px}.detailTop img{width:120px;max-height:180px;object-fit:cover;border-radius:10px}@media(max-width:480px){.detailTop img{width:90px}}
+
+.cookieBanner{display:none;position:fixed;z-index:70;left:18px;right:18px;bottom:18px;max-width:1050px;margin:auto;background:#fff;border:1px solid #dedee2;border-radius:18px;box-shadow:0 20px 65px rgba(0,0,0,.22);padding:20px;color:#19191b}.cookieBanner.show{display:block}.cookieMain{display:flex;align-items:flex-start;gap:24px;justify-content:space-between}.cookieText{max-width:620px}.cookieBanner h3{margin:0 0 7px;font-size:19px}.cookieBanner p{margin:0;color:#666;font-size:13px}.cookieActions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:245px}.cookieActions button,.cookiePrefs button{font-size:12px}.cookiePrefs{border-top:1px solid #eee;margin-top:16px;padding-top:14px}.cookiePrefs.hide{display:none}.cookieChecks{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.cookieChecks label{font-size:13px;display:flex;align-items:center;gap:7px}.cookieBanner .btn.outline{background:#fff}.cookieSettingsLink{margin-top:12px;display:inline-block;padding:0;border:0;background:transparent;color:var(--red);font-size:12px;text-decoration:underline;cursor:pointer}
+@media(max-width:700px){.cookieMain{display:block}.cookieActions{min-width:0;justify-content:flex-start;margin-top:14px}.cookieActions .btn{flex:1}.cookieBanner{left:10px;right:10px;bottom:10px;padding:16px;max-height:80vh;overflow:auto}}
 </style>
 </head>
 <body>
@@ -47,7 +65,34 @@ footer{border-top:1px solid #ddd;padding:34px 20px;color:#777;font-size:12px;bac
 <div id="stage3" class="hide success"><div class="check">✓</div><h3>Pedido demonstrativo concluído!</h3><p>Seu acesso fictício foi registrado somente nesta demonstração.</p><div class="summary"><div class="row"><span>Pedido</span><b id="orderId"></b></div><div class="row"><span>Status</span><b style="color:var(--green)">DEMONSTRATIVO</b></div></div><button class="btn" onclick="closeCart()">Voltar ao catálogo</button></div>
 </div></div></div>
 
-<footer><div class="foot"><strong>Aluga Cinema</strong>. Os preços, a disponibilidade, as avaliações e o checkout são demonstrativos e não geram cobranças nem transações reais. As imagens, os cartazes e as marcas exibidos pertencem aos seus respectivos titulares; sua presença neste catálogo não significa que exista parceria, patrocínio ou aprovação oficial.</div></footer>
+
+<div id="cookieBanner" class="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-live="polite">
+  <div class="cookieMain">
+    <div class="cookieText">
+      <h3 id="cookieTitle">Suas preferências de privacidade</h3>
+      <p>Usamos um cookie essencial para lembrar sua escolha. O site não usa atualmente ferramentas de publicidade ou análise. Você pode permitir apenas o essencial ou salvar suas preferências.</p>
+      <button class="cookieSettingsLink" type="button" onclick="showCookiePrefs()">Personalizar preferências</button>
+    </div>
+    <div class="cookieActions">
+      <button class="btn outline" type="button" onclick="saveCookieConsent(false,false)">Apenas necessários</button>
+      <button class="btn" type="button" onclick="saveCookieConsent(true,true)">Aceitar todos</button>
+    </div>
+  </div>
+  <div id="cookiePrefs" class="cookiePrefs hide">
+    <b>Configurar armazenamento</b>
+    <div class="cookieChecks">
+      <label><input type="checkbox" checked disabled> Essenciais (sempre ativos)</label>
+      <label><input id="cookieAnalytics" type="checkbox"> Análise de uso</label>
+      <label><input id="cookieMarketing" type="checkbox"> Marketing</label>
+    </div>
+    <p>As opções adicionais registram sua preferência. Elas não ativam rastreamento enquanto ferramentas correspondentes não estiverem configuradas.</p>
+    <div class="cookieActions" style="margin-top:12px">
+      <button class="btn outline" type="button" onclick="saveCookieConsent(false,false)">Apenas necessários</button>
+      <button class="btn" type="button" onclick="saveCookiePrefs()">Salvar preferências</button>
+    </div>
+  </div>
+</div>
+<footer><div class="foot"><strong>Aluga Cinema</strong>. Os preços, a disponibilidade, as avaliações e o checkout são demonstrativos e não geram cobranças nem transações reais. As imagens, os cartazes e as marcas exibidos pertencem aos seus respectivos titulares; sua presença neste catálogo não significa que exista parceria, patrocínio ou aprovação oficial. <br><span>Privacidade: o cookie essencial <code>aluga_cookie_consent</code> lembra sua escolha por até 180 dias. As avaliações ficam armazenadas localmente neste navegador.</span><br><button class="cookieSettingsLink" type="button" onclick="openCookiePreferences()">Preferências de cookies</button></div></footer>
 
 <script>
 const movies=[
@@ -87,7 +132,15 @@ else{c='<div class="summary"><b>Carteira digital</b><p style="color:#aaa;font-si
 box.innerHTML=c}
 function bindPaymentOptions(){document.querySelectorAll(".pay").forEach(btn=>btn.addEventListener("click",()=>pickPay(btn)));payFields()}
 function finishOrder(){document.getElementById("orderId").textContent="ALC-"+Math.floor(100000+Math.random()*900000);setStage(3)}
-render();bindPaymentOptions();
+
+function readCookieConsent(){const item=document.cookie.split("; ").find(x=>x.startsWith("aluga_cookie_consent="));if(!item)return null;try{return JSON.parse(decodeURIComponent(item.slice("aluga_cookie_consent=".length)))}catch(e){return null}}
+function saveCookieConsent(analytics,marketing){const prefs={necessary:true,analytics:!!analytics,marketing:!!marketing,updatedAt:new Date().toISOString()};document.cookie="aluga_cookie_consent="+encodeURIComponent(JSON.stringify(prefs))+"; Max-Age=15552000; Path=/; SameSite=Lax; Secure";try{localStorage.setItem("alugaCookiePrefs",JSON.stringify(prefs))}catch(e){}document.getElementById("cookieBanner").classList.remove("show");document.getElementById("cookiePrefs").classList.add("hide")}
+function showCookiePrefs(){const saved=readCookieConsent();document.getElementById("cookieAnalytics").checked=!!(saved&&saved.analytics);document.getElementById("cookieMarketing").checked=!!(saved&&saved.marketing);document.getElementById("cookieBanner").classList.add("show");document.getElementById("cookiePrefs").classList.remove("hide")}
+function saveCookiePrefs(){saveCookieConsent(document.getElementById("cookieAnalytics").checked,document.getElementById("cookieMarketing").checked)}
+function openCookiePreferences(){showCookiePrefs();document.getElementById("cookieBanner").scrollIntoView({block:"nearest",behavior:"smooth"})}
+function initCookieConsent(){if(!readCookieConsent())document.getElementById("cookieBanner").classList.add("show")}
+
+render();bindPaymentOptions();initCookieConsent();
 </script>
 </body>
 </html>
