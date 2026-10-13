@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Aluga Cinema | Cinema em casa</title>
+<title>Aluga Cinema | Filmes para assistir em casa</title>
 <meta name="description" content="Encontre filmes em destaque no Aluga Cinema. Explore títulos, compare opções de aluguel e conheça o catálogo para assistir em casa.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#e11d2e">
@@ -133,7 +133,7 @@ box.innerHTML=c}
 function bindPaymentOptions(){document.querySelectorAll(".pay").forEach(btn=>btn.addEventListener("click",()=>pickPay(btn)));payFields()}
 function finishOrder(){document.getElementById("orderId").textContent="ALC-"+Math.floor(100000+Math.random()*900000);setStage(3)}
 
-function readCookieConsent(){const item=document.cookie.split("; ").find(x=>x.startsWith("aluga_cookie_consent="));if(!item)return null;try{return JSON.parse(decodeURIComponent(item.slice("aluga_cookie_consent=".length)))}catch(e){return null}}
+function readCookieConsent(){const item=document.cookie.split("; ").find(x=>x.startsWith("aluga_cookie_consent="));if(item){try{return JSON.parse(decodeURIComponent(item.slice("aluga_cookie_consent=".length)))}catch(e){}}try{const saved=localStorage.getItem("alugaCookiePrefs");return saved?JSON.parse(saved):null}catch(e){return null}}
 function saveCookieConsent(analytics,marketing){const prefs={necessary:true,analytics:!!analytics,marketing:!!marketing,updatedAt:new Date().toISOString()};document.cookie="aluga_cookie_consent="+encodeURIComponent(JSON.stringify(prefs))+"; Max-Age=15552000; Path=/; SameSite=Lax; Secure";try{localStorage.setItem("alugaCookiePrefs",JSON.stringify(prefs))}catch(e){}document.getElementById("cookieBanner").classList.remove("show");document.getElementById("cookiePrefs").classList.add("hide")}
 function showCookiePrefs(){const saved=readCookieConsent();document.getElementById("cookieAnalytics").checked=!!(saved&&saved.analytics);document.getElementById("cookieMarketing").checked=!!(saved&&saved.marketing);document.getElementById("cookieBanner").classList.add("show");document.getElementById("cookiePrefs").classList.remove("hide")}
 function saveCookiePrefs(){saveCookieConsent(document.getElementById("cookieAnalytics").checked,document.getElementById("cookieMarketing").checked)}
