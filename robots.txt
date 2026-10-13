@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cesarsilvestrek-cyber.github.io/aluga-cinema/sitemap.xml
