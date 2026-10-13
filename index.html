@@ -34,12 +34,12 @@ footer{border-top:1px solid #ddd;padding:34px 20px;color:#777;font-size:12px;bac
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.partnerRow{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.navlinks{display:none}.grid{grid-template-columns:repeat(2,1fr)}.paygrid{grid-template-columns:1fr}.security{grid-template-columns:1fr}.hero h1{font-size:38px}.dialog{padding:14px;border-radius:14px}.actions{flex-direction:column}.actions .btn{width:100%}}
 .details{display:flex}.details .btn{width:100%;padding:8px;font-size:12px}.userRating{font-size:12px;color:#a66b00}.stars{display:flex;gap:4px}.star{border:0;background:#f4f4f4;border-radius:6px;padding:4px 8px;color:#bbb;cursor:pointer}.star.on{color:#d89500;background:#fff3cd}.detailModal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}.detailModal.open{display:flex}.detailBox{background:#fff;border-radius:18px;padding:22px;width:min(620px,100%);max-height:90vh;overflow:auto}.detailBox h3{margin:0 0 8px;font-size:25px}.detailBox p{color:#555}.detailTop{display:flex;gap:18px}.detailTop img{width:120px;max-height:180px;object-fit:cover;border-radius:10px}@media(max-width:480px){.detailTop img{width:90px}}
 
-.cookieBanner{display:none;position:fixed;z-index:70;left:18px;right:18px;bottom:18px;max-width:1050px;margin:auto;background:#fff;border:1px solid #dedee2;border-radius:18px;box-shadow:0 20px 65px rgba(0,0,0,.22);padding:20px;color:#19191b}.cookieBanner.show{display:block}.cookieMain{display:flex;align-items:flex-start;gap:24px;justify-content:space-between}.cookieText{max-width:620px}.cookieBanner h3{margin:0 0 7px;font-size:19px}.cookieBanner p{margin:0;color:#666;font-size:13px}.cookieActions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:245px}.cookieActions button,.cookiePrefs button{font-size:12px}.cookiePrefs{border-top:1px solid #eee;margin-top:16px;padding-top:14px}.cookiePrefs.hide{display:none}.cookieChecks{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.cookieChecks label{font-size:13px;display:flex;align-items:center;gap:7px}.cookieBanner .btn.outline{background:#fff}.cookieSettingsLink{margin-top:12px;display:inline-block;padding:0;border:0;background:transparent;color:var(--red);font-size:12px;text-decoration:underline;cursor:pointer}
+.authUser{font-size:12px;color:#555;max-width:155px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}[hidden]{display:none!important}.authEntry{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0}.authEntry .btn{background:#fff;color:#222;border:1px solid #dadade}.authEntry .btn:hover{background:#f5f5f6}.authStatus{font-size:12px;color:#aaa}.cookieBanner{display:none;position:fixed;z-index:70;left:18px;right:18px;bottom:18px;max-width:1050px;margin:auto;background:#fff;border:1px solid #dedee2;border-radius:18px;box-shadow:0 20px 65px rgba(0,0,0,.22);padding:20px;color:#19191b}.cookieBanner.show{display:block}.cookieMain{display:flex;align-items:flex-start;gap:24px;justify-content:space-between}.cookieText{max-width:620px}.cookieBanner h3{margin:0 0 7px;font-size:19px}.cookieBanner p{margin:0;color:#666;font-size:13px}.cookieActions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:245px}.cookieActions button,.cookiePrefs button{font-size:12px}.cookiePrefs{border-top:1px solid #eee;margin-top:16px;padding-top:14px}.cookiePrefs.hide{display:none}.cookieChecks{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.cookieChecks label{font-size:13px;display:flex;align-items:center;gap:7px}.cookieBanner .btn.outline{background:#fff}.cookieSettingsLink{margin-top:12px;display:inline-block;padding:0;border:0;background:transparent;color:var(--red);font-size:12px;text-decoration:underline;cursor:pointer}
 @media(max-width:700px){.cookieMain{display:block}.cookieActions{min-width:0;justify-content:flex-start;margin-top:14px}.cookieActions .btn{flex:1}.cookieBanner{left:10px;right:10px;bottom:10px;padding:16px;max-height:80vh;overflow:auto}}
 </style>
 </head>
 <body>
-<header><nav class="nav"><div class="logo">ALUGA <span>CINEMA</span></div><div class="navlinks"><a href="#catalogo">Filmes</a><a href="#parcerias">Parcerias</a><a href="#seguranca">Segurança</a></div><div class="spacer"></div><button class="btn secondary" onclick="openCart()">Carrinho (<span id="cartCount">0</span>)</button></nav></header>
+<header><nav class="nav"><div class="logo">ALUGA <span>CINEMA</span></div><div class="navlinks"><a href="#catalogo">Filmes</a><a href="#parcerias">Parcerias</a><a href="#seguranca">Segurança</a></div><div class="spacer"></div><span id="googleUserDisplay" class="authUser" hidden></span><button id="googleLoginBtn" class="btn outline" type="button" onclick="startGoogleLogin()">Entrar com Google</button><button id="googleLogoutBtn" class="btn outline" type="button" onclick="logoutGoogle()" hidden>Sair</button><button class="btn secondary" onclick="openCart()">Carrinho (<span id="cartCount">0</span>)</button></nav></header>
 
 <section class="hero">
 <div><div class="badge red">ALUGUE OU COMPRE ONLINE</div><h1>Seu cinema,<br><span style="color:var(--red)">do seu jeito.</span></h1><p>Alugue por horas, explore os lançamentos e escolha como assistir aos seus filmes favoritos.</p><div class="badges"><div class="badge">2 horas</div><div class="badge"><b>5 horas</b> em destaque</div><div class="badge">24 horas</div><div class="badge">48 horas</div><div class="badge">Compra digital</div></div></div>
@@ -60,7 +60,7 @@ footer{border-top:1px solid #ddd;padding:34px 20px;color:#777;font-size:12px;bac
 <div class="modal" id="modal"><div class="dialog">
 <div id="checkout">
 <div class="steps"><div id="s1" class="step active">1. Conta</div><div id="s2" class="step">2. Pagamento</div><div id="s3" class="step">3. Conclusão</div></div>
-<div id="stage1"><h3>Entrar na conta Aluga Cinema</h3><p class="sub">Para sua segurança, utilize apenas dados fictícios.</p><div class="field"><label>CPF</label><input id="cpf" maxlength="14" placeholder="000.000.000-00" oninput="maskCPF(this)"></div><div class="note">Use apenas dados fictícios. Nenhuma informação é enviada para um servidor.</div><div class="actions"><button class="btn secondary" onclick="closeCart()">Fechar</button><button class="btn" onclick="goPay()">Continuar</button></div></div>
+<div id="stage1"><h3>Entrar na conta Aluga Cinema</h3><p class="sub">Acesse com sua conta Google ou continue com dados fictícios nesta demonstração.</p><div id="googleCheckoutStatus" class="summary" hidden></div><div class="authEntry"><button class="btn outline" type="button" onclick="startGoogleLogin()">Continuar com Google</button><span id="googleAuthStatus" class="authStatus" role="status">O login Google precisa ser configurado no Firebase para funcionar.</span></div><div class="field" id="cpfField"><label>CPF fictício</label><input id="cpf" maxlength="14" placeholder="000.000.000-00" oninput="maskCPF(this)"></div><div class="note" id="cpfNote">Use apenas dados fictícios. Nenhuma informação é enviada para um servidor.</div><div class="actions"><button class="btn secondary" onclick="closeCart()">Fechar</button><button class="btn" onclick="goPay()">Continuar</button></div></div>
 <div id="stage2" class="hide"><h3>Finalizar pedido</h3><div id="cartSummary" class="summary"></div><div class="field"><label>Forma de pagamento</label><div class="paygrid" role="group" aria-label="Forma de pagamento"><button type="button" class="pay active" data-pay="Pix"><span class="payName">Pix</span><span class="payDesc">QR Code demonstrativo</span></button><button type="button" class="pay" data-pay="Crédito"><span class="payName">Cartão de crédito</span><span class="payDesc">Dados fictícios</span></button><button type="button" class="pay" data-pay="Débito"><span class="payName">Cartão de débito</span><span class="payDesc">Dados fictícios</span></button><button type="button" class="pay" data-pay="Boleto"><span class="payName">Boleto</span><span class="payDesc">Código demonstrativo</span></button><button type="button" class="pay" data-pay="Carteira"><span class="payName">Carteira digital</span><span class="payDesc">Simulação</span></button></div></div><div id="payFields"></div><div class="note">Pagamento totalmente fictício. Não digite dados bancários ou de cartão reais.</div><div class="actions"><button class="btn secondary" onclick="goAccount()">Voltar</button><button class="btn" onclick="finishOrder()">Confirmar demonstração</button></div></div>
 <div id="stage3" class="hide success"><div class="check">✓</div><h3>Pedido demonstrativo concluído!</h3><p>Seu acesso fictício foi registrado somente nesta demonstração.</p><div class="summary"><div class="row"><span>Pedido</span><b id="orderId"></b></div><div class="row"><span>Status</span><b style="color:var(--green)">DEMONSTRATIVO</b></div></div><button class="btn" onclick="closeCart()">Voltar ao catálogo</button></div>
 </div></div></div>
@@ -121,8 +121,8 @@ function openCart(){document.getElementById("modal").classList.add("open");goAcc
 function closeCart(){document.getElementById("modal").classList.remove("open")}
 function maskCPF(el){let v=el.value.replace(/\D/g,"").slice(0,11);v=v.replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d{1,2})$/,"$1-$2");el.value=v}
 function setStage(n){[1,2,3].forEach(i=>{document.getElementById("stage"+i).classList.toggle("hide",i!==n);document.getElementById("s"+i).classList.toggle("active",i===n)})}
-function goAccount(){setStage(1)}
-function goPay(){if(document.getElementById("cpf").value.replace(/\D/g,"").length!==11){alert("Digite um CPF fictício completo para continuar.");return}if(!cart.length){alert("Adicione um filme ao carrinho antes de finalizar.");return}setStage(2);document.getElementById("cartSummary").innerHTML=cart.map(x=>{let m=movies.find(m=>m.id===x.id);return '<div class="row"><span>'+m.title+' — '+x.kind+'</span><b>R$ '+x.price.toFixed(2)+'</b></div>'}).join("")+'<hr style="border-color:#333"><div class="row total"><span>Total</span><span>R$ '+cart.reduce((a,x)=>a+x.price,0).toFixed(2)+'</span></div>';payFields()}
+function goAccount(){setStage(1);if(typeof window.updateGoogleAuthUI==="function")window.updateGoogleAuthUI(window.alugaGoogleUser||null)}
+function goPay(){if(!window.alugaGoogleUser && document.getElementById("cpf").value.replace(/\D/g,"").length!==11){alert("Entre com Google ou digite um CPF fictício completo para continuar.");return}if(!cart.length){alert("Adicione um filme ao carrinho antes de finalizar.");return}setStage(2);document.getElementById("cartSummary").innerHTML=cart.map(x=>{let m=movies.find(m=>m.id===x.id);return '<div class="row"><span>'+m.title+' — '+x.kind+'</span><b>R$ '+x.price.toFixed(2)+'</b></div>'}).join("")+'<hr style="border-color:#333"><div class="row total"><span>Total</span><span>R$ '+cart.reduce((a,x)=>a+x.price,0).toFixed(2)+'</span></div>';payFields()}
 function pickPay(el){document.querySelectorAll(".pay").forEach(p=>p.classList.remove("active"));el.classList.add("active");pay=el.dataset.pay;payFields()}
 function payFields(){const box=document.getElementById("payFields");if(!box)return;let c="";
 if(pay==="Crédito"||pay==="Débito"){c='<div class="summary"><b>Cartão selecionado</b><p style="color:#aaa;font-size:12px;margin:6px 0 0">Esta opção é apenas demonstrativa. Nenhum dado de cartão é solicitado ou armazenado.</p></div>'}
@@ -142,5 +142,90 @@ function initCookieConsent(){if(!readCookieConsent())document.getElementById("co
 
 render();bindPaymentOptions();initCookieConsent();
 </script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+/*
+ * Configure estes quatro campos com os dados do seu app Web no Console do Firebase.
+ * O arquivo SSO-GOOGLE.md explica as etapas. Não coloque chaves privadas aqui.
+ */
+const firebaseConfig = {
+  apiKey: "COLE_API_KEY_AQUI",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO",
+  appId: "COLE_APP_ID_AQUI"
+};
+const firebaseConfigured = !Object.values(firebaseConfig).some(value =>
+  /COLE_|SEU_PROJETO|YOUR_/i.test(value)
+);
+
+window.alugaGoogleUser = null;
+window.updateGoogleAuthUI = function(user) {
+  window.alugaGoogleUser = user || null;
+  const loginButton = document.getElementById("googleLoginBtn");
+  const logoutButton = document.getElementById("googleLogoutBtn");
+  const userDisplay = document.getElementById("googleUserDisplay");
+  const checkoutStatus = document.getElementById("googleCheckoutStatus");
+  const authStatus = document.getElementById("googleAuthStatus");
+  const cpfField = document.getElementById("cpfField");
+  const cpfNote = document.getElementById("cpfNote");
+  if (loginButton) loginButton.hidden = !!user;
+  if (logoutButton) logoutButton.hidden = !user;
+  if (userDisplay) {
+    userDisplay.hidden = !user;
+    userDisplay.textContent = user ? (user.displayName || user.email || "Conta Google") : "";
+    userDisplay.title = user ? (user.email || user.displayName || "") : "";
+  }
+  if (cpfField) cpfField.hidden = !!user;
+  if (cpfNote) cpfNote.hidden = !!user;
+  if (checkoutStatus) {
+    checkoutStatus.hidden = !user;
+    checkoutStatus.textContent = user ? ("Conectado como " + (user.displayName || user.email) + ".") : "";
+  }
+  if (authStatus) {
+    authStatus.textContent = user
+      ? "Conta Google conectada."
+      : (firebaseConfigured
+        ? "Use sua conta Google para entrar sem preencher CPF fictício."
+        : "Login Google aguardando configuração do projeto Firebase. Veja SSO-GOOGLE.md no repositório.");
+  }
+};
+window.startGoogleLogin = async function() {
+  if (!firebaseConfigured) {
+    alert("O botão de login está preparado, mas precisa dos dados de um projeto Firebase. Abra o arquivo SSO-GOOGLE.md no repositório e siga as etapas de configuração.");
+    return;
+  }
+  try {
+    await signInWithPopup(auth, googleProvider);
+  } catch (error) {
+    console.error("Falha no login Google:", error);
+    alert("Não foi possível entrar com Google (" + (error.code || "erro") + "). Confira se o provedor Google está ativo e se o domínio do GitHub Pages está autorizado no Firebase.");
+  }
+};
+window.logoutGoogle = async function() {
+  if (!auth) return;
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Falha ao sair:", error);
+    alert("Não foi possível encerrar a sessão. Tente novamente.");
+  }
+};
+
+let auth = null;
+let googleProvider = null;
+if (firebaseConfigured) {
+  const app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  googleProvider = new GoogleAuthProvider();
+  googleProvider.setCustomParameters({ prompt: "select_account" });
+  onAuthStateChanged(auth, user => window.updateGoogleAuthUI(user));
+} else {
+  window.updateGoogleAuthUI(null);
+}
+</script>
+
 </body>
 </html>
